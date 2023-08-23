@@ -10,6 +10,7 @@ serve(async (request) => {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
+            console.log(request)
             let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json());
             console.log(res);
             return res;
@@ -17,6 +18,7 @@ serve(async (request) => {
 
         // member
         if (isIn(request.url, "members/info")) {
+            console.log(request)
             let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json());
             console.log(res);
             return res;
