@@ -16,6 +16,7 @@ serve((request) => {
             return fetch("https://openchat-stats.line-apps.com/api/v1/stats/members/info", request).then(d => d.json())
         }
 
+        return new Response("bad!")
     } // api
 
     return serveDir(request);
