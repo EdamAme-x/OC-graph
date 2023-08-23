@@ -10,15 +10,16 @@ serve(async (request) => {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
-            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()));
-            c
+            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json());
+            console.log(request)
+            console.log(res);
             return res;
         }
 
         // member
         if (isIn(request.url, "members/info")) {
-            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()));
-            console.log(res)
+            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json());
+            console.log(res);
             return res;
         }
 
