@@ -6389,18 +6389,15 @@ function Q2(e) {
     const g = [];
     g[0] = ()=>{
         o === void 0 ? o = u : o += u
-    }
-    ,
+    },
     g[1] = ()=>{
         o !== void 0 && (t.push(o),
         o = void 0)
-    }
-    ,
+    },
     g[2] = ()=>{
         g[0](),
         s++
-    }
-    ,
+    },
     g[3] = ()=>{
         if (s > 0)
             s--,
@@ -6413,8 +6410,7 @@ function Q2(e) {
                 return !1;
             g[1]()
         }
-    }
-    ;
+    };
     function b() {
         const w = e[a + 1];
         if (n === 5 && w === "'" || n === 6 && w === '"')
