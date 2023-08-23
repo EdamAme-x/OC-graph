@@ -10,14 +10,16 @@ serve(async (request) => {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
-            console.log(await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()))
-            return await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json())
+            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()));
+            c
+            return res;
         }
 
         // member
         if (isIn(request.url, "members/info")) {
-            console.log(await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()))
-            return await fetch("https://openchat-stats.line-apps.com/api/v1/stats/members/info", request).then(d => d.json())
+            let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()));
+            console.log(res)
+            return res;
         }
 
         return new Response("bad!")
