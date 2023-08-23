@@ -6,15 +6,17 @@ serve((request) => {
 
     console.log("req:" + request.url)
 
-    if (isIn(request.url, "api/v1")) {
+    if (isIn(request.url, "info")) {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
+            console.log(fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()))
             return fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json())
         }
 
         // member
         if (isIn(request.url, "members/info")) {
+            console.log(fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request).then(d => d.json()))
             return fetch("https://openchat-stats.line-apps.com/api/v1/stats/members/info", request).then(d => d.json())
         }
 
