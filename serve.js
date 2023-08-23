@@ -6,7 +6,7 @@ serve((request) => {
 
     console.log("req:" + request.url)
 
-    if (isIn(request.url, "api")) {
+    if (isIn(request.url, "info")) {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
