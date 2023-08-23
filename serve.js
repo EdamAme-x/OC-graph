@@ -4,7 +4,9 @@ import { isIn } from "./isIn.js"
 
 serve((request) => {
 
-    if (isIn(request.url, "api/v1/")) {
+    console.log("req:" + request.url)
+
+    if (isIn(request.url, "api")) {
 
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
