@@ -52,5 +52,20 @@ serve(async (request) => {
         return new Response("bad!")
     } // api
 
+    if (isIn(request.url, "oauth2/v2.1")) {
+        // verifyの時は
+        if (isIn(request.url, "verify")) {
+            let res = await fetch("https://api.line.me/oauth2/v2.1/verify?" + request.url.split("?")[1], request).then(d => d.json());
+            console.log("token-oauth:" + res);
+            return res;
+        }else {  // 他はそのまま
+            let res = await fetch(request.url.replace("oc-graph.deno.dev", "api.line.me") , request).then(d => d.json());
+            console.log("other-oauth:" + res);
+            return res;
+        }
+
+       
+    }
+
     return serveDir(request);
 });
