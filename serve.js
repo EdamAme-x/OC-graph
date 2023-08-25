@@ -56,11 +56,11 @@ serve(async (request) => {
         // verifyの時は
         if (isIn(request.url, "verify")) {
             let res = await fetch("https://api.line.me/oauth2/v2.1/verify?" + request.url.split("?")[1], request).then(d => d.json());
-            console.log("token-oauth:" + JSON.stringfy(res));
+            console.log("token-oauth:" + JSON.stringify(res));
             return res;
         }else {  // 他はそのまま
             let res = await fetch(request.url.replace("oc-graph.deno.dev", "api.line.me") , request).then(d => d.json());
-            console.log("other-oauth:" + JSON.stringfy(res));
+            console.log("other-oauth:" + JSON.stringify(res));
             return res;
         }
 
