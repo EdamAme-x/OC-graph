@@ -1,4 +1,5 @@
-window._liff_before = {..._liff};
+console.log()
+window._liff_before = Object.create(window._liff_befo);
 window._liff_before.scopes.push("openchat.info");
 window._liff = Object.create(window._liff_before);
 // --- vue ---
