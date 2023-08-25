@@ -53,6 +53,32 @@ serve(async (request) => {
     } // api
 
     if (isIn(request.url, "oauth2/v2.1")) {
+
+        console.log(request)
+
+        let request_copy = {
+            bodyUsed: false,
+            headers: {
+                accept: "application/json, text/plain, */*",
+                "accept-encoding": "gzip, deflate, br",
+                "accept-language": "ja",
+                cookie: "LIFF_STORE:expires:1657909707-gNvoQEQN=1657909707",
+                host: "oc-graph.deno.dev",
+                referer: "https://openchatstats.landpress.line.me",
+                "sec-fetch-dest": "empty",
+                "sec-fetch-mode": "cors",
+                "sec-fetch-site": "same-origin",
+                "user-agent": "Android LINE 13.3 LIFF",
+                "x-liff-token": request.headers.get("x-liff-token"),
+                "x-requested-with": "jp.naver.line.android",
+                "x-square-chat-id": request.headers.get("x-square-chat-id"),
+                "x-square-id": request.headers.get("x-square-id")
+            },
+            method: "GET",
+            redirect: "follow",
+            url: request.url.replace("https://oc-graph.deno.dev", "https://api.line.me/")
+        }
+
         // verifyの時は
         if (isIn(request.url, "verify")) {
             let res = await fetch("https://api.line.me/oauth2/v2.1/verify?" + request.url.split("?")[1], request).then(d => d.json());
