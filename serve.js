@@ -21,17 +21,22 @@ serve(async (request) => {
                 "sec-fetch-dest": "empty",
                 "sec-fetch-mode": "cors",
                 "sec-fetch-site": "same-origin",
-                "user-agent": "Android LINE 13.3 LIFF"
+                "user-agent": "Android LINE 13.3 LIFF",
+                "x-liff-token": request.headers.get("x-liff-token"),
+                "x-requested-with": "jp.naver.line.android",
+                "x-square-chat-id": request.headers.get("x-square-chat-id"),
+                "x-square-id": request.headers.get("x-square-id")
             },
             method: "GET",
             redirect: "follow",
             url: request.url.replace("https://oc-graph.deno.dev", "https://openchatstats.landpress.line.me/")
         }
 
+        console.log(request)
+        console.log("copy: " + JSON.stringify({ ...request_copy }));
+
         // OC 情報
         if (isIn(request.url, "openchat-info")) {
-            console.log(request)
-            console.log("copy: " + JSON.stringify({ ...request_copy }));
             let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/openchat-info", request_copy).then(d => d.json());
             console.log(res);
             return res;
@@ -39,7 +44,6 @@ serve(async (request) => {
 
         // member
         if (isIn(request.url, "members/info")) {
-            console.log(request_copy)
             let res = await fetch("https://openchat-stats.line-apps.com/api/v1/stats/members/info", request_copy).then(d => d.json());
             console.log(res);
             return res;
